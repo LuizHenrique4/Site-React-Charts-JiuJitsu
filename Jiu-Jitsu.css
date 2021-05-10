@@ -1,0 +1,38 @@
+.div_origem{
+    width: 750px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    
+} 
+
+.div_origem img{
+    width: 95%;
+    height: 450px;
+    margin-top: 35px;
+}
+
+.div_destaque h1{
+    color: black;
+    display: flex;
+    font-size: 1.5rem;
+
+}
+
+.div_destaque{
+    width: 400px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.div_destaque img{
+    width: 95%;
+    height: 165px;
+    margin-top: 10px;
+}
+
+
