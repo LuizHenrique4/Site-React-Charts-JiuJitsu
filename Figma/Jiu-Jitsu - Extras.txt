@@ -2,3 +2,9 @@ https://www.legiaodosherois.com.br/2021/falcao-soldado-invernal-compositor-easte
 
 -Cursor
 -Curiosidades com opções
+
+Effect cube
+
+Parallax
+
+https://swiperjs.com/demos#slides-per-column

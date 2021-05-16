@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/Consulta.css">
+    <title>Consultar faixas</title>
+</head>
+
+<body>
+    <div>
+        <h1 id="titulo">Consulte sua sequência de faixas</h1>
+    </div>
+    
+    <div>
+        <h2 id="subtitulo">Complete suas informações</h2>
+    </div>
+
+    <form>
+        <fieldset class="formulario">
+            <div class="campo1">
+                <label for="nome">Nome do Lutador(a):</label>
+                <input class="input1" type="text" name="nome" id="input_nome" required>
+            </div>
+           
+            <div class="campo1">
+                <label for="cpf">CPF:</label>
+                <input class="input1" oninput="mascara(this)" type="text" required>
+            </div>
+           
+            <div class="campo">
+                <label for="experiencia">Quantos semestres de experência no Jiu-Jitsu você possui?</label><br>
+                <input class="input2" type="number" id="experiencia">
+                <input type="checkbox" onclick="desabilitar(this.checked)">Não possuo
+            </div>
+
+            <div class="campo">
+                <label for="data_nascimento">Data de Nascimento:</label>
+                <input type="date" required>
+            </div>
+
+            <div class="campo">
+                <label for="peso">Peso:</label>
+                <input class="input2"  type="text" required>
+            </div>
+        </fieldset>
+
+        <h2 id="subtitulo">Treino</h2>
+        <fieldset class="formulario">
+            <div class="campo">
+                <label for="data_inicio">Data de Inicio:</label>
+                <input type="date" required>
+            </div>
+
+            <div class="campo">
+                <Label for="periodo">Período:</Label>
+                <label>
+                    <input type="radio" name="periodo" value="Matutino">Matutino
+                </label>
+                <label>
+                    <input type="radio" name="periodo" value="Vespertino">Vespertino
+                </label>
+                <label>
+                    <input type="radio" name="periodo" value="Noturno">Noturno
+                </label>
+            </div>
+
+            <div class="campo">
+                <label>Arte Marcial:</label>
+                <input type="checkbox" name="arte" value="1" checked>Jiu-Jitsu<br>
+            </div>
+        </fieldset>
+        <button type="submit" class="botao">Consultar faixas</button>
+    </form>
+
+</body>
+
+</html>
+<script>
+    // Começo - Máscara para CPF
+    function mascara(i) {
+
+        var v = i.value;
+
+        if (isNaN(v[v.length - 1])) { // impede entrar outro caractere que não seja número
+            i.value = v.substring(0, v.length - 1);
+            return;
+        }
+
+        i.setAttribute("maxlength", "14");
+        if (v.length == 3 || v.length == 7) i.value += ".";
+        if (v.length == 11) i.value += "-";
+    }
+    // Fim - Máscara para CPF
+
+    // Começo - Habilitar ou desabilitar input semestres de experiencia
+    function desabilitar(selecionado) {
+    document.getElementById('experiencia').disabled = selecionado;
+}
+    // Fim - Habilitar ou desabilitar input semestres de experiencia
+</script>
