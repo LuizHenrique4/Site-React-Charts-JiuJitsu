@@ -19,7 +19,7 @@
                 <li><a href="./Jiu-Jitsu.html">Jiu-Jitsu</a></li>
                 <li><a href="./Faixas.html">Faixas</a></li>
                 <li><a href="/">Regras</a></li>
-                <li><a href="/">Movimentos</a></li>
+                <li><a href="./Movimentos.html">Movimentos</a></li>
                 <li><a href="./Login.html">Login</a></li>
             </ul>
 
@@ -30,13 +30,13 @@
     <!-- Ínicio da sessão em que está localizado o cadastro -->
     <section class="ca-container">
         <!-- Ínicio do formulário para cadastro -->
-        <form class="ca-cadastro">
+        <form class="ca-cadastro" id="form_cadastro" method="post" onsubmit="return cadastrar()">
             <!-- Ínicio da grid dentro do formulário -->
             <div class="ca-grid">
                 <!-- Ínicio do cabeçalho do formulário -->
                 <header>
-                    <p><a href="./login.html">Login</a></p>
-                    <p>
+                    <p><span><a href="./login.html">Login</a></span>
+                   
                         <span><a href="./cadastro.html">Cadastro</a></span>
                     </p>
                 </header>
@@ -46,34 +46,35 @@
                 <div class="ca-input">
                     <!-- Fieldset faz o agrupamento da label e do input -->
                     <fieldset>
-                        <label for="cnpj">CPF do usuário:</label>
+                        <label for="cpf">CPF do usuário:</label>
                         <br />
-                        <input id="cnpj" type="text" />
+                        <input id="cpf" type="text" name="cpf" />
                       </fieldset>
         
                       <fieldset>
-                        <label for="email">E-mail do usuário:</label>
+                        <label for="login">Login do usuário:</label>
                         <br />
-                        <input id="email" type="email" />
+                        <input id="login" type="login" name="login" />
                       </fieldset>
         
                       <fieldset>
                         <label for="senha">Senha:</label>
                         <br />
-                        <input id="senha" type="password" />
+                        <input id="senha" type="password" name="senha" />
                       </fieldset>
 
-                    <fieldset>
+                    <!-- <fieldset>
                         <label for="senha_confirmacao">Confirme sua Senha:</label>
                         <br />
                         <input id="senha_confirmacao" type="password" />
-                    </fieldset>
+                    </fieldset> -->
+                    
                 </div>
                 <!-- Ínicio da div que engloba os campos para preenchimento -->
                 
                 <!-- Ínicio da div que engloba o botão -->
                 <div class="ca-btn">
-                    <button onclick="cadastro()">Cadastrar</button>
+                    <input type="submit" id="btn_entrar" value="Cadastrar" class="btn-green">
                 </div>
                 <!-- Fim da div que engloba o botão -->
             </div>

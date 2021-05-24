@@ -18,7 +18,7 @@
                 <li><a href="./Jiu-Jitsu.html">Jiu-Jitsu</a></li>
                 <li><a href="/">Faixas</a></li>
                 <li><a href="/">Regras</a></li>
-                <li><a href="/">Movimentos</a></li>
+                <li><a href="./Movimentos.html">Movimentos</a></li>
                 <li><a href="./Login.html">Login</a></li>
             </ul>
 
@@ -27,16 +27,14 @@
 <!-- ================================================== -->
 <section class="container">
        
-        <form class="lo-login">
+        <form class="lo-login" id="form_login" method="post" onsubmit="return entrar()">
            
             <div class="lo-grid">
                
                 <header>
                     <p>
                         <span><a href="./login.html">Login</a></span>
-                    </p>
-                    
-                    <p>
+                
                         <span><a href="./Cadastro.html">Cadastro</a></span>
                     </p>
 
@@ -44,20 +42,17 @@
                
                 <div class="lo-input">
                     <fieldset>
-                        <label for="email2">E-mail do usuário:</label>
+                        <label for="login">E-mail do usuário:</label>
                         <br />
-                        <input id="email_login" type="email" />
+                        <input id="login" type="email" name="login" />
                     </fieldset>
 
                     <fieldset>
-                        <label for="senha2">Senha:</label>
+                        <label for="senha">Senha:</label>
                         <br />
-                        <input id="senha_login" type="password" />
+                        <input id="senha" type="password" name="senha"/>
                     </fieldset>
                 </div>
-               
-
-                <div class="esqueceu-senha"><a href="#">Esqueceu a senha?</a></div>
 
 
                 <div class="lo-btn">
