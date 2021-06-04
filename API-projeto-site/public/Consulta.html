@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/Consulta.css">
+    <link rel="stylesheet" href="CSS/style.css">
+
+    <title>Consultar faixas</title>
+</head>
+
+<body>
+    <header class="header">
+        <a href="./index.html">Home</a>
+
+        <nav>
+            <ul class="menu">
+                <li><a href="./Jiu-Jitsu.html">Jiu-Jitsu</a></li>
+                <li><a href="./Faixas.html">Faixas</a></li>
+                <li><a href="/">Regras</a></li>
+                <li><a href="./Movimentos.html">Movimentos</a></li>
+                <li><a href="./Login.html">Login</a></li>
+            </ul>
+
+        </nav>
+    </header>
+
+    <div id="div_exibir"></div>
+
+    <div class="div_container">
+        <div id="div_consulta" style="display: block;">
+
+            <div>
+                <h1 id="titulo">Consulte sua sequência de faixas</h1>
+            </div>
+
+            <div>
+                <h2 id="subtitulo">Complete suas informações</h2>
+            </div>
+
+            <form>
+                <fieldset class="formulario">
+                    <div class="campo_lutador">
+                        <label for="nome">Nome do Lutador(a):</label>
+                        <input class="input_lutador" type="text" name="nome" id="input_nome_lutador" required>
+                    </div>
+
+                    <div class="campo_lutador">
+                        <label for="cpf">CPF:</label>
+                        <input class="input_lutador" oninput="mascara(this)" type="text" required>
+                    </div>
+
+                    <div class="campo">
+                        <label for="experiencia">Quantos semestres de experência no Jiu-Jitsu você possui?</label><br>
+                        <input class="input2" type="number" id="input_tempo_experiencia">
+                        <input type="checkbox" onclick="desabilitar(this.checked)">Não possuo
+                    </div>
+
+                    <div class="campo">
+                        <label for="data_nascimento">Data de Nascimento:</label>
+                        <input type="date" id="input_data_nascimento" required>
+                    </div>
+
+                </fieldset>
+
+                <h2 id="subtitulo">Treino</h2>
+                <fieldset class="formulario">
+                    <div class="campo">
+                        <label for="data_inicio">Data de Inicio:</label>
+                        <input type="date" required>
+                    </div>
+
+                    <div class="campo">
+                        <Label for="periodo">Período:</Label>
+                        <label>
+                            <input type="radio" name="periodo" value="Matutino">Matutino
+                        </label>
+                        <label>
+                            <input type="radio" name="periodo" value="Vespertino">Vespertino
+                        </label>
+                        <label>
+                            <input type="radio" name="periodo" value="Noturno">Noturno
+                        </label>
+                    </div>
+
+                    <div class="campo">
+                        <label>Arte Marcial:</label>
+                        <input type="checkbox" name="arte" value="1" checked>Jiu-Jitsu<br>
+                    </div>
+                </fieldset>
+            </form>
+            <br>
+            <button onclick="btn_consultar()">Consultar faixas</button>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>
+            Todos os direitos reservados a Luiz Henrique. Copyright © 2021
+        </p>
+
+        <div class="icones">
+
+        </div>
+
+    </footer>
+</body>
+
+</html>
+<script>
+    // Começo - Máscara para CPF
+    function mascara(i) {
+
+        var v = i.value;
+
+        if (isNaN(v[v.length - 1])) { // impede entrar outro caractere que não seja número
+            i.value = v.substring(0, v.length - 1);
+            return;
+        }
+
+        i.setAttribute("maxlength", "14");
+        if (v.length == 3 || v.length == 7) i.value += ".";
+        if (v.length == 11) i.value += "-";
+    }
+    // Fim - Máscara para CPF
+
+    // Começo - Habilitar ou desabilitar input semestres de experiencia
+    function desabilitar(selecionado) {
+        document.getElementById('input_tempo_experiencia').disabled = selecionado;
+    }
+    // Fim - Habilitar ou desabilitar input semestres de experiencia
+
+
+    function btn_consultar() {
+
+        // INICIO - Calcular faixas correspondentes à experiência
+        div_consulta.style.display = 'none';
+
+        var nome_lutador = input_nome_lutador.value;
+
+        var tempo_experiencia_minima = Number(input_tempo_experiencia.value);
+        var tempo_maximo_total = 6.5;
+        var tempo_restante_treino = (tempo_maximo_total / 0.5) - tempo_experiencia_minima;
+
+        var tempo_faixa_marrom = tempo_restante_treino - (1.5 / 0.5);
+        var tempo_faixa_roxa = tempo_faixa_marrom - (2.0 / 0.5);
+        var tempo_faixa_azul = tempo_faixa_roxa - (2.0 / 0.5);
+        var tempo_faixa_branca = tempo_faixa_azul - (1.0 / 0.5);
+        var tempo_sem_experiencia = tempo_faixa_branca + (0.5 / 0.5);
+        // FIM - - Calcular faixas correspondentes à experiência
+
+        // INICIO - Calcular idade
+        let data_nascimento = document.querySelector('#input_data_nascimento')
+        let start = data_nascimento.value
+
+        start = new Date(start)
+        end = new Date()
+
+        let diffInTime = Math.abs(end - start)
+        let timeInOneDay = 1000 * 60 * 60 * 24
+        let diffInDays = (diffInTime / timeInOneDay) / 365
+
+        var diffInDayss = Math.floor(diffInDays);
+        // FIM - Calcular idade
+
+
+        if (tempo_restante_treino <= 13) {
+            div_exibir.innerHTML = `Lutador(a) <b>${nome_lutador}</b>, você possui <b>${diffInDayss}</b> anos de idade e <b>${tempo_experiencia_minima}</b> semestres de experiência de Jiu-Jirsu
+                                    <br>Faixa atual: <b>Não possui.</b>
+                                    <br><br>
+                                    Faltam ${tempo_restante_treino} anos para conseguir a faixa preta e completar o treino<br>
+                                    Faltam ${tempo_faixa_marrom} anos para conseguir a faixa marrom<br>
+                                    Faltam ${tempo_faixa_roxa} anos para conseguir a faixa roxa<br>
+                                    Faltam ${tempo_faixa_azul} anos para conseguir a faixa azul<br>
+                                    Falta ${tempo_sem_experiencia} ano para conseguir a faixa branca<br>`;
+        }
+        if (tempo_restante_treino <= 12) {
+            div_exibir.innerHTML = `Lutador(a) <b>${nome_lutador}</b>, você possui <b>${diffInDayss}</b> anos de idade <br>
+                                    <br>Faixa atual: <b>Faixa Branca.</b>
+                                    <br><br>
+                                    Faltam ${tempo_restante_treino} anos para conseguir a faixa preta e completar o treino<br>
+                                    Faltam ${tempo_faixa_marrom} anos para conseguir a faixa marrom<br>
+                                    Faltam ${tempo_faixa_roxa} anos para conseguir a faixa roxa<br>
+                                    Faltam ${tempo_faixa_azul} anos para conseguir a faixa azul<br>
+                                   `;
+        }
+        if (tempo_restante_treino <= 11) {
+            div_exibir.innerHTML = `Lutador(a) <b>${nome_lutador}</b>, você possui <b>${diffInDayss}</b> anos de idade <br>
+                                    <br>Faixa atual: <b>Faixa azul.</b>
+                                    <br><br>
+                                    Faltam ${tempo_restante_treino} anos para conseguir a faixa preta e completar o treino<br>
+                                    Faltam ${tempo_faixa_marrom} anos para conseguir a faixa marrom<br>
+                                    Faltam ${tempo_faixa_roxa} anos para conseguir a faixa roxa<br>
+                                    `;
+        }
+        if (tempo_restante_treino <= 9) {
+            div_exibir.innerHTML = `Lutador(a) <b>${nome_lutador}</b>, você possui <b>${diffInDayss}</b> anos de idade <br>
+                                    <br>Faixa atual: <b>Faixa roxa.</b>
+                                    <br><br>
+                                    Faltam ${tempo_restante_treino} anos para conseguir a faixa preta e completar o treino<br>
+                                    Faltam ${tempo_faixa_marrom} anos para conseguir a faixa marrom<br>
+                                   `;
+        }
+        if (tempo_restante_treino <= 5) {
+            div_exibir.innerHTML = `Lutador(a) <b>${nome_lutador}</b>, você possui <b>${diffInDayss}</b> anos de idade <br>
+                                    <br>Faixa atual: <b>Faixa marrom.</b>
+                                    <br><br>
+                                    Faltam ${tempo_restante_treino} anos para conseguir a faixa preta e completar o treino<br>
+                                    `;
+        }
+        if (tempo_restante_treino <= 2) {
+            div_exibir.innerHTML = `Lutador(a) <b>${nome_lutador}</b>, você possui <b>${diffInDayss}</b> anos de idade <br>
+                                    <br>Faixa atual: <b>Faixa preta.</b>
+                                    <br><br>
+                                    Voce ja terminou o treino`;
+        }
+    }
+</script>
