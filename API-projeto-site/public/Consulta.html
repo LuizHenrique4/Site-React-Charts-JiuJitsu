@@ -68,8 +68,8 @@
                 <h2 id="subtitulo">Treino</h2>
                 <fieldset class="formulario">
                     <div class="campo">
-                        <label for="data_inicio">Data de Inicio:</label>
-                        <input type="date" required>
+                        <label for="data_inicio" >Data de Inicio:</label>
+                        <input type="date" id="input_data_inicio" required>
                     </div>
 
                     <div class="campo">
@@ -165,49 +165,77 @@
         var diffInDayss = Math.floor(diffInDays);
         // FIM - Calcular idade
 
+/////
 
+    let treino_inicial = document.querySelector('#input_data_inicio')
+    let treino_inicio = treino_inicial.value
+    
+    // INICIO - Soma data e experiência equivalente ao tempo para adquirir cada faixa
+    let tempo_experiencia = Number(input_tempo_experiencia.value);
+    data_faixa_preta = new Date(treino_inicio); 
+    data_faixa_marrom = new Date(treino_inicio); 
+    data_faixa_roxa = new Date(treino_inicio); 
+    data_faixa_azul = new Date(treino_inicio); 
+    data_faixa_branca = new Date(treino_inicio); 
+    
+    let experiencia_semestre = (tempo_experiencia * 180);
+    
+    data_faixa_preta.setDate(data_faixa_preta.getDate() - experiencia_semestre + 4680);
+    data_faixa_marrom.setDate(data_faixa_marrom.getDate() - experiencia_semestre + 3600);
+    data_faixa_roxa.setDate(data_faixa_roxa.getDate() - experiencia_semestre + 2160);
+    data_faixa_azul.setDate(data_faixa_azul.getDate() - experiencia_semestre + 720);
+    data_faixa_branca.setDate(data_faixa_branca.getDate() - experiencia_semestre + 360);
+    
+    const meses = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"];
+    let dataFormatada_faixa_preta = meses[(data_faixa_preta.getMonth())] + " " + data_faixa_preta.getFullYear();
+    let dataFormatada_faixa_marrom = meses[(data_faixa_marrom.getMonth())] + " " + data_faixa_marrom.getFullYear();
+    let dataFormatada_faixa_roxa = meses[(data_faixa_roxa.getMonth())] + " " + data_faixa_roxa.getFullYear();
+    let dataFormatada_faixa_azul = meses[(data_faixa_azul.getMonth())] + " " + data_faixa_azul.getFullYear();
+    let dataFormatada_faixa_branca = meses[(data_faixa_branca.getMonth())] + " " + data_faixa_branca.getFullYear();
+
+///
         if (tempo_restante_treino <= 13) {
-            div_exibir.innerHTML = `Lutador(a) <b>${nome_lutador}</b>, você possui <b>${diffInDayss}</b> anos de idade e <b>${tempo_experiencia_minima}</b> semestres de experiência de Jiu-Jirsu
+            div_exibir.innerHTML = `Lutador(a) <b>${nome_lutador}</b>, você possui <b>${diffInDayss}</b> anos de idade e <b>${tempo_experiencia_minima}</b> semestres de experiência de Jiu-Jitsu
                                     <br>Faixa atual: <b>Não possui.</b>
                                     <br><br>
-                                    Faltam ${tempo_restante_treino} anos para conseguir a faixa preta e completar o treino<br>
-                                    Faltam ${tempo_faixa_marrom} anos para conseguir a faixa marrom<br>
-                                    Faltam ${tempo_faixa_roxa} anos para conseguir a faixa roxa<br>
-                                    Faltam ${tempo_faixa_azul} anos para conseguir a faixa azul<br>
-                                    Falta ${tempo_sem_experiencia} ano para conseguir a faixa branca<br>`;
+                                    Faltam ${tempo_restante_treino} anos para conseguir a faixa preta e completar o treino - ${dataFormatada_faixa_preta}<br>
+                                    Faltam ${tempo_faixa_marrom} anos para conseguir a faixa marrom - ${dataFormatada_faixa_marrom}<br>
+                                    Faltam ${tempo_faixa_roxa} anos para conseguir a faixa roxa - ${dataFormatada_faixa_roxa}<br>
+                                    Faltam ${tempo_faixa_azul} anos para conseguir a faixa azul - ${dataFormatada_faixa_azul}<br>
+                                    Falta ${tempo_sem_experiencia} ano para conseguir a faixa branca - ${dataFormatada_faixa_branca}<br>`;
         }
         if (tempo_restante_treino <= 12) {
             div_exibir.innerHTML = `Lutador(a) <b>${nome_lutador}</b>, você possui <b>${diffInDayss}</b> anos de idade <br>
                                     <br>Faixa atual: <b>Faixa Branca.</b>
                                     <br><br>
-                                    Faltam ${tempo_restante_treino} anos para conseguir a faixa preta e completar o treino<br>
-                                    Faltam ${tempo_faixa_marrom} anos para conseguir a faixa marrom<br>
-                                    Faltam ${tempo_faixa_roxa} anos para conseguir a faixa roxa<br>
-                                    Faltam ${tempo_faixa_azul} anos para conseguir a faixa azul<br>
+                                    Faltam ${tempo_restante_treino} anos para conseguir a faixa preta e completar o treino - ${dataFormatada_faixa_preta}<br>
+                                    Faltam ${tempo_faixa_marrom} anos para conseguir a faixa marrom - ${dataFormatada_faixa_marrom}<br>
+                                    Faltam ${tempo_faixa_roxa} anos para conseguir a faixa roxa - ${dataFormatada_faixa_roxa}<br>
+                                    Faltam ${tempo_faixa_azul} anos para conseguir a faixa azul - ${dataFormatada_faixa_azul}<br>
                                    `;
         }
         if (tempo_restante_treino <= 11) {
             div_exibir.innerHTML = `Lutador(a) <b>${nome_lutador}</b>, você possui <b>${diffInDayss}</b> anos de idade <br>
                                     <br>Faixa atual: <b>Faixa azul.</b>
                                     <br><br>
-                                    Faltam ${tempo_restante_treino} anos para conseguir a faixa preta e completar o treino<br>
-                                    Faltam ${tempo_faixa_marrom} anos para conseguir a faixa marrom<br>
-                                    Faltam ${tempo_faixa_roxa} anos para conseguir a faixa roxa<br>
+                                    Faltam ${tempo_restante_treino} anos para conseguir a faixa preta e completar o treino - ${dataFormatada_faixa_preta}<br>
+                                    Faltam ${tempo_faixa_marrom} anos para conseguir a faixa marrom - ${dataFormatada_faixa_marrom}<br>
+                                    Faltam ${tempo_faixa_roxa} anos para conseguir a faixa roxa - ${dataFormatada_faixa_roxa}<br>
                                     `;
         }
         if (tempo_restante_treino <= 9) {
             div_exibir.innerHTML = `Lutador(a) <b>${nome_lutador}</b>, você possui <b>${diffInDayss}</b> anos de idade <br>
                                     <br>Faixa atual: <b>Faixa roxa.</b>
                                     <br><br>
-                                    Faltam ${tempo_restante_treino} anos para conseguir a faixa preta e completar o treino<br>
-                                    Faltam ${tempo_faixa_marrom} anos para conseguir a faixa marrom<br>
+                                    Faltam ${tempo_restante_treino} anos para conseguir a faixa preta e completar o treino - ${dataFormatada_faixa_preta}<br>
+                                    Faltam ${tempo_faixa_marrom} anos para conseguir a faixa marrom - ${dataFormatada_faixa_marrom}<br>
                                    `;
         }
         if (tempo_restante_treino <= 5) {
             div_exibir.innerHTML = `Lutador(a) <b>${nome_lutador}</b>, você possui <b>${diffInDayss}</b> anos de idade <br>
                                     <br>Faixa atual: <b>Faixa marrom.</b>
                                     <br><br>
-                                    Faltam ${tempo_restante_treino} anos para conseguir a faixa preta e completar o treino<br>
+                                    Faltam ${tempo_restante_treino} anos para conseguir a faixa preta e completar o treino - ${dataFormatada_faixa_preta}<br>
                                     `;
         }
         if (tempo_restante_treino <= 2) {
