@@ -1,8 +1,97 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300&display=swap");
+:root
+{
+    --boderRadius: 10px;
+    --border: 0.5px solid lightgrey;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+    font-family: "Poppins", sans-serif; 
+    text-decoration: none;
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(253, 247, 255);
+   /* background-image: url(/Img/fundo.jpg);*/
+    background-size: cover;
+    font-family: 'Hind Siliguri', sans-serif;
+}
+
+.container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.cabecalho{
+    width: 27%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+    background-color: black;
+}
+
+.cabecalho h3{
+    width: 90%;
+    height: 70px;
+    font-size: 30px;
+    text-align: center;
+    padding-top: 10px;
+    border-bottom: 1px solid rgba(97, 97, 97, 0.671);
+
+}
+
+.cabecalho h4{
+    width: 90%;
+    height: 40px;
+    /*background-color: rgb(69, 204, 159);*/
+}
+.cabecalho p{
+    width: 90%;
+    height: 20px;
+   /* background-color: aquamarine;*/
+}
+
+.cabecalho nav{
+    width: 90%;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+   /* background-color: beige; */
+}
+
+.cabecalho li{
+    width: 100%;
+    height: 40px;
+    text-decoration: none;
+   /* background-color: cadetblue;*/
+}
+
+.cabecalho a{
+    padding-left: 10px;
+    color: white;
+}
+
+/* container*/
 #titulo{
     font-family: sans-serif;
     color: white;    
     display: flex;
     justify-content: center;
+    margin-top: 60px;
 }
 
 #subtitulo{
@@ -26,7 +115,7 @@ input{
 }
 
 .input_lutador{
-   width: 70%;
+   width: 100%;
    height: 20px;
 }
 
@@ -49,9 +138,11 @@ body {
 }
 
 fieldset{
-    width: 30%;
-    margin-left: 450px;
+    width: 35%;
+    margin-left: 330px;
     background-color: silver;
+    margin-top: 25px;
+    margin-bottom: 20px;
 }
 
 
@@ -70,18 +161,25 @@ fieldset{
     background: white;
 } 
 
-button {
+.btn_consultar_faixa {
     font-size: 1.2em;
     background: black;
     border: 0;
-    margin-bottom: 1em;
     color: #ffffff;
-    margin-left: 670px;
+    margin-left: 500px;
     position: absolute;
     transform: translate(-50%, -50%)
 }
 
-.div_container{
-    height: 750px;
-    background-color: #333;
+.btn_consulta_lutador{
+    font-size: 1.2em;
+    background: white;
+    color: black;
+    
+}
+
+.btn_consultar_outra_faixa{
+    font-size: 1.2em;
+    background: white;
+    color: black;
 }
