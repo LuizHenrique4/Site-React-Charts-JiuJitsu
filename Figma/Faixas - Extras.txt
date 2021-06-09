@@ -1,5 +1,0 @@
-https://www.kimonoparajiujitsu.com.br/loja/noticia.php?loja=749074&id=1
-
--Redirecionar qual faixa/sequencia o usuario tem direito(Variaveis, Funções, Condicionais)
--Redirecionar quando/quanto tempo vai conseguir cada faixa(Operações Matemáticas, Repetições)
--Tela de carregamento - Faixa - img1

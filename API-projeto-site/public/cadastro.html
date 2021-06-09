@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,98 +19,83 @@
             <ul class="menu">
                 <li><a href="./Jiu-Jitsu.html">Jiu-Jitsu</a></li>
                 <li><a href="./Faixas.html">Faixas</a></li>
-                <li><a href="/">Regras</a></li>
+                <li><a href="./contato.html">Contato</a></li>
                 <li><a href="./Movimentos.html">Movimentos</a></li>
                 <li><a href="./Login.html">Login</a></li>
             </ul>
 
         </nav>
     </header>
-    <!-- Fim do cabeçalho -->
 
-    <!-- Ínicio da sessão em que está localizado o cadastro -->
-    <section class="ca-container">
-        <!-- Ínicio do formulário para cadastro -->
+    <section class="container_container">
+
         <form class="ca-cadastro" id="form_cadastro" method="post" onsubmit="return cadastrar()">
-            <!-- Ínicio da grid dentro do formulário -->
-            <div class="ca-grid">
-                <!-- Ínicio do cabeçalho do formulário -->
-                <header>
+
+            <div class="grid_cadastro">
+
+                <header class="heade">
                     <p><span><a href="./login.html">Login</a></span>
-                   
                         <span><a href="./cadastro.html">Cadastro</a></span>
                     </p>
                 </header>
-                <!-- Fim do cabeçalho do formulário -->
 
-                <!-- Ínicio da div que engloba os campos para preenchimento -->
-                <div class="ca-input">
-                    <!-- Fieldset faz o agrupamento da label e do input -->
+                <div class="input_cadastro">
+
                     <fieldset>
                         <label for="cpf">CPF do usuário:</label>
                         <br />
                         <input id="cpf" type="text" name="cpf" />
-                      </fieldset>
-        
-                      <fieldset>
+                    </fieldset>
+
+                    <fieldset>
                         <label for="login">Login do usuário:</label>
                         <br />
                         <input id="login" type="login" name="login" />
-                      </fieldset>
-        
-                      <fieldset>
+                    </fieldset>
+
+                    <fieldset>
                         <label for="senha">Senha:</label>
                         <br />
                         <input id="senha" type="password" name="senha" />
-                      </fieldset>
+                    </fieldset>
 
-                    <!-- <fieldset>
-                        <label for="senha_confirmacao">Confirme sua Senha:</label>
-                        <br />
-                        <input id="senha_confirmacao" type="password" />
-                    </fieldset> -->
-                    
+
                 </div>
-                <!-- Ínicio da div que engloba os campos para preenchimento -->
-                
-                <!-- Ínicio da div que engloba o botão -->
-                <div class="ca-btn">
+
+                <div class="btn_cadastro">
                     <input type="submit" id="btn_entrar" value="Cadastrar" class="btn-green">
                 </div>
-                <!-- Fim da div que engloba o botão -->
+
             </div>
-            <!-- Fim da grid dentro do formulário -->
+
         </form>
-        <!-- Ínicio do formulário para cadastro -->
+
     </section>
-    <!-- Fim da sessão em que está localizado o cadastro -->
 
     <footer class="footer">
         <p>
             Todos os direitos reservados a Luiz Henrique - 2021
         </p>
-
-        <div class="icones">
-
         </div>
     </footer>
-    
+
 </body>
+
 </html>
 
 <script>
 
     function cadastrar() {
-      //  aguardar();
+        //  aguardar();
         var formulario = new URLSearchParams(new FormData(form_cadastro));
         fetch("/usuarios/cadastrar", {
             method: "POST",
             body: formulario
         }).then(function (response) {
-            
+
             if (response.ok) {
 
-                window.location.href='login.html';
+                window.location.href = 'login.html';
 
             } else {
 
@@ -126,14 +112,14 @@
 
     function aguardar() {
         btn_entrar.disabled = true;
-        img_aguarde.style.display='block';
-        div_erro.style.display='none';
+        img_aguarde.style.display = 'block';
+        div_erro.style.display = 'none';
     }
 
     function finalizar_aguardar() {
         btn_entrar.disabled = false;
-        img_aguarde.style.display='none';
-        div_erro.style.display='block';
+        img_aguarde.style.display = 'none';
+        div_erro.style.display = 'block';
     }
 
 </script>

@@ -9,6 +9,7 @@ create table usuario(
     senha varchar(20)
 );
 select * from usuario;
+
 create table lutador(
 	idLutador int primary key,
     nomeLutador varchar(45),
@@ -36,4 +37,3 @@ create table treino (
 ); 
 
 
-    

@@ -1,3 +1,0 @@
--Cadastro: Nome, id, data de nascimento, email, senha, peso, faixa (Vetores)
--Login: id, senha (Vetores)
--Esqueceu/alterar senha: (Vetores)
